@@ -5,6 +5,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "../ui/hover-card";
+import { Button } from "../ui/button";
 
 const Header = async () => {
   const session = await auth0.getSession();
@@ -18,12 +19,30 @@ const Header = async () => {
       </li>
       {session?.user ? (
         <>
-          <li>
-            <a href="/auth/logout">Logout</a>
-          </li>
-          <li>
-            <Link href={"/cart"}>Cart</Link>
-          </li>
+          <HoverCard>
+            <HoverCardTrigger>
+              <Button>Hello, {session.user.name}</Button>
+            </HoverCardTrigger>
+            <HoverCardContent>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a href="/auth/logout" className="hover:underline">
+                    Logout
+                  </a>
+                </li>
+                <li>
+                  <Link href={"/cart"} className="hover:underline">
+                    Cart
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"/retailer"} className="hover:underline">
+                    Retailer Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </HoverCardContent>
+          </HoverCard>
         </>
       ) : (
         <li>
