@@ -1,3 +1,4 @@
+import QuantityChange from "@/components/quantity-change";
 import { auth0 } from "@/lib/auth0";
 import axios from "axios";
 import type { Metadata } from "next";
@@ -32,6 +33,7 @@ const CartPage = async () => {
             </div>
             <div className="flex flex-col gap-3">
               <p>Quantity: {item.quantity}</p>
+              <QuantityChange cartId={item.id} productId={item.product.id} />
             </div>
           </li>
         ))}
