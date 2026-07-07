@@ -1,7 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2026-06-24.dahlia",
+});
 
 export async function POST(req: NextRequest) {
   const { cart } = await req.json();
@@ -20,6 +22,9 @@ export async function POST(req: NextRequest) {
       },
       quantity: item.quantity,
     })),
+    metadata: {
+      userId: cart[0].userId,
+    },
     success_url: `${process.env.APP_BASE_URL}/success/{CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.APP_BASE_URL}/cart`,
   });
