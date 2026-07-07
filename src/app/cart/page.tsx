@@ -1,4 +1,6 @@
+import CheckoutButton from "@/components/checkout";
 import QuantityChange from "@/components/quantity-change";
+import { Button } from "@/components/ui/button";
 import { auth0 } from "@/lib/auth0";
 import axios from "axios";
 import type { Metadata } from "next";
@@ -20,7 +22,7 @@ const CartPage = async () => {
   return (
     <main className="flex flex-col gap-5 items-center justify-center p-5">
       <h1 className="font-bold text-6xl">Cart</h1>
-      <ul>
+      <ul className="flex flex-col gap-5">
         {cart.map((item: any) => (
           <li
             key={item.id}
@@ -38,6 +40,7 @@ const CartPage = async () => {
           </li>
         ))}
       </ul>
+      <CheckoutButton cart={cart} />
     </main>
   );
 };

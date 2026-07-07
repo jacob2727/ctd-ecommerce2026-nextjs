@@ -13,7 +13,7 @@ const Header = async () => {
   return (
     <ul className="flex align-items-center justify-between gap-4 p-4 border-b">
       <li>
-        <Link className="text-gray-700" href="/">
+        <Link className="text-gray-700 hover:underline" href="/">
           Home
         </Link>
       </li>
@@ -46,7 +46,9 @@ const Header = async () => {
         </>
       ) : (
         <li>
-          <a href="/auth/login">Sign In</a>
+          <a href="/auth/login" className="hover:underline">
+            Sign In
+          </a>
         </li>
       )}
     </ul>
