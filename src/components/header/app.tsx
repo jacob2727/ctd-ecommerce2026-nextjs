@@ -36,6 +36,11 @@ const Header = async () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href={"/orders"} className="hover:underline">
+                    Orders
+                  </Link>
+                </li>
+                <li>
                   <Link href={"/retailer"} className="hover:underline">
                     Retailer Dashboard
                   </Link>
