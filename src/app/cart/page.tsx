@@ -26,8 +26,8 @@ const CartPage = async () => {
       <h1 className="font-bold text-6xl">Cart</h1>
       <ul className="flex flex-col gap-5">
         {cart.map((item: any) => {
-          item.showing && (
-            <>
+          return (
+            item.showing && (
               <li
                 key={item.id}
                 className="shadow p-5 rounded-2xl hover:shadow-2xl transition-all duration-300 ease-in-out w-[50vw] flex justify-between"
@@ -45,7 +45,7 @@ const CartPage = async () => {
                   />
                 </div>
               </li>
-            </>
+            )
           );
         })}
       </ul>

@@ -8,10 +8,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(req: NextRequest) {
   const { cart } = await req.json();
   console.log(cart);
+  const filteredCard = cart.filter((cartItem: any) => cartItem.showing);
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     payment_method_types: ["card", "pay_by_bank"],
-    line_items: cart.map((item: any) => ({
+    line_items: filteredCard.map((item: any) => ({
       price_data: {
         currency: "usd",
         product_data: {
