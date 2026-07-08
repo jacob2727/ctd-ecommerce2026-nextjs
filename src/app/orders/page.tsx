@@ -27,7 +27,7 @@ const OrdersPage = async () => {
         {orders.map((order: any) => (
           <li
             key={order.id}
-            className="p-5 w-full flex flex-col gap-3"
+            className="rounded-2xl border hover:shadow-2xl transition-all hover:scale-101 p-5 w-full flex flex-col gap-3"
           >
             <p>Order ID: {order.id}</p>
             <p>Status: {order.status}</p>
