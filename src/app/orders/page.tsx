@@ -31,7 +31,7 @@ const OrdersPage = async () => {
           >
             <p>Order ID: {order.id}</p>
             <p>Status: {order.status}</p>
-            <p></p>
+            <p>Total: ${(order.cart.product.priceInCents / 100).toFixed(2)}</p>
             <p>Date: {new Date(order.timestamp).toLocaleDateString()}</p>
             <h3 className="font-bold text-xl mt-3">Item:</h3>
             <ul className="grid grid-cols-3 gap-3 pl-5">
