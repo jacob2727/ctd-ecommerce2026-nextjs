@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       quantity: item.quantity,
     })),
     metadata: {
-      userId: cart[0].user.userId,
+      userId: filteredCard[0].user.userId,
       cartIds: JSON.stringify(filteredCard.map((item: any) => item.id)),
     },
     success_url: `${process.env.APP_BASE_URL}/success/{CHECKOUT_SESSION_ID}`,
