@@ -45,6 +45,7 @@ const OrdersPage = async () => {
               {order.cart.map((item: any) => (
                 <li key={item.id} className="flex flex-col gap-2">
                   <p className="font-bold text-xl">{item.product.name}</p>
+                  <p>Quantity: {item.quantity}</p>
                   <Image
                     src="/globe.svg"
                     alt={item.product.name}
