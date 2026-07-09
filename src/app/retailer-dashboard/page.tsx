@@ -14,9 +14,9 @@ const retailerDashboard = async () => {
   }
 
   return (
-    <div>
+    <main>
       <GetUserData />
-    </div>
+    </main>
   );
 };
 
