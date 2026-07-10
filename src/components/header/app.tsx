@@ -11,7 +11,7 @@ const Header = async () => {
   const session = await auth0.getSession();
 
   return (
-    <ul className="flex align-items-center justify-between gap-4 p-4 border-b">
+    <ul className=" fixed bg-white top-0 right-0 left-0 flex align-items-center justify-between gap-4 p-4 border-b z-100">
       <li>
         <Link className="text-gray-700 hover:underline" href="/">
           Home
@@ -41,7 +41,10 @@ const Header = async () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href={"/retailer-dashboard"} className="hover:underline">
+                  <Link
+                    href={"/retailer-dashboard"}
+                    className="hover:underline"
+                  >
                     Retailer Dashboard
                   </Link>
                 </li>
