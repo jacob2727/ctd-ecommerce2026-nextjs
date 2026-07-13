@@ -1,4 +1,5 @@
 "use client";
+import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,7 +9,9 @@ const ProductCatalog = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const productsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/product/all`);
+      const productsRes = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
+      );
       setProducts(productsRes.data);
     };
     fetchProducts();
@@ -27,6 +30,11 @@ const ProductCatalog = () => {
           >
             <h1 className="text-2xl font-bold">{product.name}</h1>
             <p>Retailer: {product.owner.name}</p>
+            <p>${(product.priceInCents / 100).toFixed(2)}</p>
+            <p>{product.discounted && <Badge>Discounted</Badge>}</p>
+            {product.discounted && (
+              <p>Original Price: {(product.ogPriceInCents / 100).toFixed(2)}</p>
+            )}
           </li>
         ))}
       </ul>
