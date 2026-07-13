@@ -5,7 +5,14 @@ import { redirect } from "next/navigation";
 import RetailerOrders from "@/components/retailer-dashboard/orders/app";
 import RetailerDashboardSidebar from "@/components/retailer-dashboard/sidebar/app";
 import SideBarRetailerData from "@/components/retailer-dashboard/quickData/app";
-const retailerDashboard = async () => {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Retailer Dashboard",
+  description: "This is the retailer dashboard",
+};
+
+const RetailerDashboard = async () => {
   const session = (await auth0.getSession())?.user?.sub;
 
   const response = await axios.post(
@@ -30,4 +37,4 @@ const retailerDashboard = async () => {
   );
 };
 
-export default retailerDashboard;
+export default RetailerDashboard;
