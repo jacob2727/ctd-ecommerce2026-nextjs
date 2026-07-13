@@ -1,6 +1,6 @@
 "use client";
 
-import useUserData from "@/app/(main)/hooks/useUserData";
+import useUserData from "@/app/hooks/useUserData";
 import { auth0 } from "@/lib/auth0";
 import { useUser } from "@auth0/nextjs-auth0";
 

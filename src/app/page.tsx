@@ -7,11 +7,7 @@ export const metadata: Metadata = {
 };
 
 const HomePage = () => {
-  return (
-    <main>
-      <ProductCatalog />
-    </main>
-  );
+  return <main><ProductCatalog /></main>;
 };
 
 export default HomePage;

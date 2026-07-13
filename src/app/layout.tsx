@@ -1,14 +1,19 @@
+import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Header from "@/components/header/app";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-const LayoutROOOT = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 };
 
-export default LayoutROOOT;
+export default Layout;

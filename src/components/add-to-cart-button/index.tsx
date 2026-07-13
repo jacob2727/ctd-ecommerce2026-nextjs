@@ -15,7 +15,7 @@ const AddToCartButton = () => {
             userId: user?.sub,
             productId: window.location.pathname.split("/").pop(),
           });
-          toast.success("Product added to cart!");
+          toast.success("Product added to cart!")
         }}
       >
         Add to Cart
