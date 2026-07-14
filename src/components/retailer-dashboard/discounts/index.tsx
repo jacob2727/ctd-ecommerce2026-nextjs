@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Percent, Package, DollarSign, Boxes, Tag } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 interface Discount {
   id: string;
@@ -26,7 +25,6 @@ interface Discount {
 }
 
 const ShowAllDiscounts = ({ discounts }: { discounts: Discount[] }) => {
-  const router = useRouter();
   if (!discounts.length) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
@@ -90,7 +88,7 @@ const ShowAllDiscounts = ({ discounts }: { discounts: Discount[] }) => {
                   </div>
 
                   <CardAction>
-                    <Button size="sm" onClick={() => router.push(`/retailer-dashboard/discounts/${item.id}`)}>View Discount</Button>
+                    <Button size="sm">View Discount</Button>
                   </CardAction>
                 </CardHeader>
 

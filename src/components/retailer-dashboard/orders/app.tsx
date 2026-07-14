@@ -45,7 +45,7 @@ const RetailerOrders = () => {
       </div>
     );
   }
-
+  console.log(`Orders: ${JSON.stringify(retailerOrders)}`);
   return (
     <main className="min-h-0 min-w-0 flex-1 overflow-y-auto border-r border-gray-300 px-4 py-8">
       <div className="mx-auto w-full max-w-4xl">
@@ -87,6 +87,7 @@ const RetailerOrders = () => {
                 </p>
 
                 <p>
+                  {console.log(order.finalpriceInCents)}
                   <span className="font-semibold">Price:</span>{" "}
                   {"$" + (parseFloat(order.order.finalPriceInCents) / 100).toFixed(2)}
                 </p>
