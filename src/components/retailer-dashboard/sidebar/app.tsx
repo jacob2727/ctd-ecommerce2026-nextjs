@@ -25,15 +25,15 @@ const RetailerDashboardSidebar = () => {
       </Link>
       <Link
         className="border-b border-gray-300  w-full self-stretch text-center  flex justify-center items-center flex-1"
-        href={"/"}
+        href={"/retailer-dashboard/create-discount"}
       >
-        Text14
+        Create Discount Offer
       </Link>
       <Link
         className="border-b border-gray-300 w-full self-stretch text-center flex justify-center items-center flex-1"
-        href={"/"}
+        href={"/retailer-dashboard/discounts"}
       >
-        Text15
+        All Discounts
       </Link>
       <Link
         className="border-b border-gray-300 w-full self-stretch text-center  flex justify-center items-center  flex-1"

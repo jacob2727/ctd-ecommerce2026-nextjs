@@ -19,7 +19,7 @@ const ProductCreate = () => {
   const userId = user?.sub;
   const router = useRouter();
 
-  //@ts-ignore
+  // @ts-ignore
   const retailerId = useUserData(userId).id;
 
   const [name, setName] = useState("");
