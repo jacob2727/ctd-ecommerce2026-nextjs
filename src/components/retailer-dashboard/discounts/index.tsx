@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -25,6 +26,7 @@ interface Discount {
 }
 
 const ShowAllDiscounts = ({ discounts }: { discounts: Discount[] }) => {
+  const router = useRouter();
   if (!discounts.length) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
@@ -88,7 +90,12 @@ const ShowAllDiscounts = ({ discounts }: { discounts: Discount[] }) => {
                   </div>
 
                   <CardAction>
-                    <Button size="sm">View Discount</Button>
+                    <Button
+                      size="sm"
+                      onClick={() => router.push(`/retailer-dashboard/discounts/${item.id}`)}
+                    >
+                      View Discount
+                    </Button>
                   </CardAction>
                 </CardHeader>
 
