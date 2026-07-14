@@ -41,6 +41,7 @@ const RetailerAllProducts = () => {
   const userId = user?.sub;
 
   const userData = useUserData(userId);
+  //@ts-ignore
   const retailerId = userData?.id;
 
   useEffect(() => {
