@@ -8,23 +8,35 @@ import axios from "axios";
 
 const RetailerDashboardSidebar = () => {
   const session = useUser();
-  const data = useUserData(session.user?.sub);
+  const account = useUserData(session.user?.sub);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
     async function run() {
-      const { data: res } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/link`,
-        // @ts-expect-error
-        { accountId: data.accountId },
-      );
-      setUrl(res.url);
+      // @ts-ignore
+      if (!account?.accountId) {
+        return;
+      }
+
+      try {
+        const { data: res } = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/link`,
+          // @ts-ignore
+          { accountId: account.accountId },
+        );
+
+        setUrl(res.url);
+      } catch (error) {
+        console.error("Failed to load retailer link:", error);
+      }
     }
     run();
-  });
+  }, [account]);
+
+  const earningsHref = url || "/retailer-dashboard";
 
   const menuItems = [
-    { label: "View Monetary Dashboard", href: url },
+    { label: "Earnings", href: earningsHref },
     { label: "Create Product", href: "/" },
     { label: "Edit Product Name", href: "/" },
     { label: "Edit Product Description", href: "/" },
