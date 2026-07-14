@@ -11,11 +11,13 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const ProductCreate = () => {
   const { user, isLoading: isUserLoading } = useUser();
 
   const userId = user?.sub;
+  const router = useRouter();
 
   // @ts-ignore
   const retailerId = useUserData(userId).id;
@@ -93,11 +95,12 @@ const ProductCreate = () => {
         },
       );
       console.log("new prod: ", response.data);
-      //resetForm();
+      resetForm();
     } catch (error) {
       console.error("Could not create the product:", error);
     } finally {
       setIsSubmitting(false);
+      router.push("/retailer-dashboard");
     }
   };
 
