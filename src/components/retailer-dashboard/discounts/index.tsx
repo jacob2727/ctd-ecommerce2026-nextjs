@@ -92,7 +92,7 @@ const ShowAllDiscounts = ({ discounts }: { discounts: Discount[] }) => {
                   <CardAction>
                     <Button
                       size="sm"
-                      onClick={() => router.push(`/discounts/${item.id}`)}
+                      onClick={() => router.push(`/retailer-dashboard/discounts/${item.id}`)}
                     >
                       View Discount
                     </Button>

@@ -202,7 +202,7 @@ function EditChooser({
           `${process.env.NEXT_PUBLIC_API_URL}/discounts/change/offer`,
           {
             id: data.id,
-            offer: value,
+            offer: parseFloat(value) / 100,
           },
         );
       }
