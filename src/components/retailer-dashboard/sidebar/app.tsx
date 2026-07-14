@@ -36,6 +36,7 @@ const RetailerDashboardSidebar = () => {
   const earningsHref = url || "/retailer-dashboard";
 
   const menuItems = [
+    { label: "Main Dashboard Page", href: "/retailer-dashboard" },
     { label: "Earnings", href: earningsHref },
     { label: "Create Product", href: "/" },
     { label: "Edit Product Name", href: "/" },
