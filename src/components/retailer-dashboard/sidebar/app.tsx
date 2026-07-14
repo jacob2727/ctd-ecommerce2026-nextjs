@@ -33,8 +33,6 @@ const RetailerDashboardSidebar = () => {
       href: "/retailer-dashboard/create-discount",
     },
     { label: "All Discounts", href: "/retailer-dashboard/discounts" },
-    { label: "Text2", href: "/" },
-    { label: "Text3", href: "/" },
   ];
 
   return (
