@@ -12,7 +12,7 @@ const RetailerDashboardSidebar = () => {
         Create Product
       </Link>
       <Link
-        className="border-b border-gray-300 w-full self-stretch text-center flex justify-center items-center 0 flex-1"
+        className="border-b border-gray-300 w-full self-stretch text-center flex justify-center items-center flex-1"
         href={"/"}
       >
         Edit Product Name
