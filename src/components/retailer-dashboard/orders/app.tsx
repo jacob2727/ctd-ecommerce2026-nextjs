@@ -49,18 +49,6 @@ const RetailerOrders = () => {
   console.log("Account: ", account);
   return (
     <main className="min-h-0 min-w-0 flex-1 overflow-y-auto border-r border-gray-300 px-4 py-8">
-      <Button
-        onClick={async () => {
-          const { data: res } = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/link`,
-            // @ts-ignore
-            { accountId: account.accountId },
-          );
-          window.open(res.url, "_blank");
-        }}
-      >
-        See Monetary Dashboard
-      </Button>
       <div className="mx-auto w-full max-w-4xl">
         <h1 className="mb-6 text-3xl font-bold text-gray-900">
           Retailer Orders

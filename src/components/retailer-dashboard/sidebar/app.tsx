@@ -1,9 +1,30 @@
 "use client";
 
+import useUserData from "@/app/hooks/useUserData";
+import { useUser } from "@auth0/nextjs-auth0";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const RetailerDashboardSidebar = () => {
+  const session = useUser();
+  const data = useUserData(session.user?.sub);
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    async function run() {
+      const { data: res } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/link`,
+        // @ts-expect-error
+        { accountId: data.accountId },
+      );
+      setUrl(res.url);
+    }
+    run();
+  });
+
   const menuItems = [
+    { label: "View Monetary Dashboard", href: url },
     { label: "Create Product", href: "/" },
     { label: "Edit Product Name", href: "/" },
     { label: "Edit Product Description", href: "/" },
