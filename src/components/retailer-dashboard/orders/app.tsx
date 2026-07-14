@@ -96,7 +96,9 @@ const RetailerOrders = () => {
                       </CardTitle>
 
                       <CardDescription className="mt-1 truncate">
-                        {order.userName || order.email || "Unknown customer"}
+                        {order.order.cart.user.name ||
+                          order.order.cart.user.email ||
+                          "Unknown customer"}
                       </CardDescription>
                     </div>
 
@@ -119,7 +121,9 @@ const RetailerOrders = () => {
                       <span className="text-muted-foreground">Customer</span>
 
                       <span className="text-right font-medium">
-                        {order.userName || order.email || "Unknown"}
+                        {order.order.cart.user.name ||
+                          order.order.cart.user.email ||
+                          "Unknown"}
                       </span>
                     </div>
 
@@ -127,7 +131,7 @@ const RetailerOrders = () => {
                       <span className="text-muted-foreground">Product</span>
 
                       <span className="text-right font-medium">
-                        {order.productName || "Unknown product"}
+                        {order.order.cart.product.name || "Unknown product"}
                       </span>
                     </div>
 
@@ -148,7 +152,9 @@ const RetailerOrders = () => {
                         Quantity
                       </p>
 
-                      <p className="mt-1 text-xl font-bold">{order.quantity}</p>
+                      <p className="mt-1 text-xl font-bold">
+                        {order.order.cart.quantity}
+                      </p>
                     </div>
 
                     <div className="rounded-lg border bg-muted/30 p-3">
@@ -157,7 +163,7 @@ const RetailerOrders = () => {
                       </p>
 
                       <p className="mt-1 text-xl font-bold">
-                        ${(order.price / 100).toFixed(2)}
+                        ${(order.order.finalPriceInCents / 100).toFixed(2)}
                       </p>
                     </div>
                   </div>
