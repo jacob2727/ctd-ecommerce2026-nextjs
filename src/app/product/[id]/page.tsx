@@ -143,7 +143,7 @@ const ProductIdPage = async ({
                 </div>
 
                 <div className="space-y-3">
-                  <AddToCartButton />
+                  {canPurchase && <AddToCartButton />}
 
                   {!canPurchase && (
                     <p className="text-center text-sm text-destructive">
