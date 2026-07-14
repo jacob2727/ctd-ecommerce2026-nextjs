@@ -3,11 +3,13 @@ import { useUser } from "@auth0/nextjs-auth0";
 import useUserData from "@/app/hooks/useUserData";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 const RetailerOrders = () => {
   const [retailerOrders, setRetailerOrders] = useState([]);
   const session = useUser();
   const sessionId = session?.user?.sub;
+  const account = useUserData(sessionId);
 
   // @ts-ignore
   const userData = useUserData(sessionId);
@@ -34,7 +36,7 @@ const RetailerOrders = () => {
     fetchOrders();
   }, [retailerId]);
 
-  console.log(retailerOrders);
+  console.log(account);
   if (session.isLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -42,9 +44,21 @@ const RetailerOrders = () => {
       </div>
     );
   }
-  console.log(retailerOrders);
+  console.log("Account: ", account);
   return (
     <main className="min-h-0 min-w-0 flex-1 overflow-y-auto border-r border-gray-300 px-4 py-8">
+      <Button
+        onClick={async () => {
+          const { data: res } = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/link`,
+            // @ts-ignore
+            { accountId: account.accountId },
+          );
+          window.open(res.url, "_blank");
+        }}
+      >
+        See Monetary Dashboard
+      </Button>
       <div className="mx-auto w-full max-w-4xl">
         <h1 className="mb-6 text-3xl font-bold text-gray-900">
           Retailer Orders

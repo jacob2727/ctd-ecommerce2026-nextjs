@@ -29,11 +29,11 @@ const RetailerDashboard = async () => {
   }
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <main className="flex h-screen w-full overflow-hidden">
       <RetailerDashboardSidebar />
       <RetailerOrders />
       <SideBarRetailerData />
-    </div>
+    </main>
   );
 };
 
