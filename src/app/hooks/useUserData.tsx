@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const useUserData = (sessionId?: string) => {
   const [userData, setUserData] = useState("");
-
   useEffect(() => {
     const fetchData = async () => {
       if (!sessionId) {

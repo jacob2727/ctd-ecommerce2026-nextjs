@@ -9,19 +9,19 @@ const RetailerDashboardSidebar = () => {
         className="border-b border-gray-300  w-full self-stretch text-center flex justify-center items-center flex-1"
         href={"/"}
       >
-        Text1
+        Create Product
       </Link>
       <Link
         className="border-b border-gray-300 w-full self-stretch text-center flex justify-center items-center 0 flex-1"
         href={"/"}
       >
-        Text12
+        Edit Product Name
       </Link>
       <Link
         className="border-b border-gray-300 w-full self-stretch text-center flex justify-center items-center  flex-1"
         href={"/"}
       >
-        Text13
+        Edit Product Description
       </Link>
       <Link
         className="border-b border-gray-300  w-full self-stretch text-center  flex justify-center items-center flex-1"
