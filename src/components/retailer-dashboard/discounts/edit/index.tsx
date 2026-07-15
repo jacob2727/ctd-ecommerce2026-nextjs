@@ -53,6 +53,8 @@ const EditDiscount = ({
     return `$${(cents / 100).toFixed(2)}`;
   };
 
+  const router = useRouter();
+
   return (
     <div className="p-6 flex justify-center">
       <div className="w-full max-w-3xl">
@@ -138,11 +140,15 @@ const EditDiscount = ({
             <CardAction>
               <Button
                 variant={"destructive"}
-                onClick={async () =>
+                onClick={async () => {
                   await axios.post(
                     `${process.env.NEXT_PUBLIC_API_URL}/discounts/delete`,
-                  )
-                }
+                    {
+                      id: data.id,
+                    },
+                  );
+                  router.refresh();
+                }}
               >
                 Delete this Discount
               </Button>
