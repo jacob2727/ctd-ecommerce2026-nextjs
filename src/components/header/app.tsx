@@ -50,7 +50,7 @@ const Header = () => {
                 </Link>
               </Button>
 
-              <Popover openDelay={100} closeDelay={150}>
+              <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="max-w-52 gap-2">
                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary">

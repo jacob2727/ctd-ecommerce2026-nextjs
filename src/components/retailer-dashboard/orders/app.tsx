@@ -167,10 +167,6 @@ const RetailerOrders = () => {
                       </p>
                     </div>
                   </div>
-
-                  <Button variant="outline" className="w-full">
-                    View Order
-                  </Button>
                 </CardContent>
               </Card>
             ))}
