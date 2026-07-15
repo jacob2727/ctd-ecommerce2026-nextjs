@@ -134,6 +134,20 @@ const EditDiscount = ({
               </div>
             </div>
           </CardContent>
+          <CardFooter>
+            <CardAction>
+              <Button
+                variant={"destructive"}
+                onClick={async () =>
+                  await axios.post(
+                    `${process.env.NEXT_PUBLIC_API_URL}/discounts/delete`,
+                  )
+                }
+              >
+                Delete this Discount
+              </Button>
+            </CardAction>
+          </CardFooter>
         </Card>
       </div>
     </div>
