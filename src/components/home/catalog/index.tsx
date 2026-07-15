@@ -17,7 +17,8 @@ const ProductCatalog = () => {
       const productsRes = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
-      setProducts(productsRes.data);
+      console.log(productsRes.data);
+      setProducts(productsRes.data.filter((product: any) => product.stock > 0));
     };
 
     fetchProducts();
@@ -73,9 +74,9 @@ const ProductCatalog = () => {
 
                   <div className="mt-3 flex flex-wrap gap-2">
                     <Badge
-                      variant={product.available ? "secondary" : "destructive"}
+                      variant={product.stock > 0 ? "secondary" : "destructive"}
                     >
-                      {product.available ? "Available" : "Unavailable"}
+                      {product.stock > 0 ? "Available" : "Unavailable"}
                     </Badge>
 
                     {product.discounted && (

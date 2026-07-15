@@ -24,7 +24,6 @@ interface Product {
   description: string;
   priceInCents: number;
   stock: number;
-  available: boolean;
   showing: boolean;
   location: {
     address?: string;
@@ -51,7 +50,7 @@ const ProductIdPage = async ({
   }).format(product.priceInCents / 100);
 
   const isInStock = product.stock > 0;
-  const canPurchase = product.available && isInStock;
+  const canPurchase = isInStock;
 
   return (
     <main className="min-h-screen bg-muted/20 px-4 py-10 sm:px-6 lg:px-8">
@@ -79,8 +78,8 @@ const ProductIdPage = async ({
             <Card>
               <CardHeader className="space-y-5">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant={product.available ? "default" : "secondary"}>
-                    {product.available ? "Available" : "Unavailable"}
+                  <Badge variant={isInStock ? "default" : "secondary"}>
+                    {isInStock ? "Available" : "Unavailable"}
                   </Badge>
 
                   <Badge
@@ -147,7 +146,7 @@ const ProductIdPage = async ({
                 </div>
 
                 <div className="space-y-3">
-                  <AddToCartButton productAvailable={product.available} />
+                  <AddToCartButton productAvailable={isInStock} />
                 </div>
               </CardContent>
             </Card>
