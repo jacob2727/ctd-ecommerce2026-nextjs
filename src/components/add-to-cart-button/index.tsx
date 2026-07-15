@@ -4,12 +4,16 @@ import { Button } from "../ui/button";
 import axios from "axios";
 import { toast, Toaster } from "sonner";
 
-const AddToCartButton = () => {
-  const { user } = useUser();
+interface AddToCartButtonProps {
+  productAvailable: boolean;
+}
 
+const AddToCartButton = ({ productAvailable }: AddToCartButtonProps) => {
+  const { user } = useUser();
   return (
     <>
       <Button
+        disabled={!productAvailable}
         onClick={async () => {
           await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/cart/add`, {
             userId: user?.sub,

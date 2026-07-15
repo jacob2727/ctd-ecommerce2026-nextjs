@@ -17,8 +17,8 @@ const ProductCatalog = () => {
       const productsRes = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
-
-      setProducts(productsRes.data);
+      console.log("Products response:", productsRes.data);
+      setProducts(productsRes.data.filter((product: any) => product.showing));
     };
 
     fetchProducts();
@@ -72,9 +72,17 @@ const ProductCatalog = () => {
                     <Package className="h-5 w-5 text-primary" />
                   </div>
 
-                  {product.discounted && (
-                    <Badge className="mt-3 w-fit">Discounted</Badge>
-                  )}
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Badge
+                      variant={product.available ? "secondary" : "destructive"}
+                    >
+                      {product.available ? "Available" : "Unavailable"}
+                    </Badge>
+
+                    {product.discounted && (
+                      <Badge variant="secondary">Discounted</Badge>
+                    )}
+                  </div>
                 </CardHeader>
 
                 <CardContent className="space-y-5">

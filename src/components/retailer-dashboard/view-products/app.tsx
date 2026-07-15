@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Package, MapPin, Boxes, DollarSign } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 interface ProductLocation {
   address?: string;
 }
@@ -43,7 +43,7 @@ const RetailerAllProducts = () => {
   const userData = useUserData(userId);
   //@ts-ignore
   const retailerId = userData?.id;
-
+  const router = useRouter();
   useEffect(() => {
     if (!retailerId) {
       if (!isUserLoading && userId) {
@@ -177,6 +177,7 @@ const RetailerAllProducts = () => {
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {retailerProducts.map((product) => (
               <Card
+                onClick={() => router.push(`/retailer-dashboard/${product.id}`)}
                 key={product.id}
                 className="group overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >

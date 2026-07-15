@@ -42,9 +42,9 @@ const RetailerDashboardSidebar = () => {
   const menuItems = [
     { label: "Main Dashboard Page", href: "/retailer-dashboard" },
     { label: "Earnings", href: earningsHref },
-    { label: "Create Product", href: "/" },
-    { label: "Edit Product Name", href: "/" },
-    { label: "Edit Product Description", href: "/" },
+    { label: "Create Product", href: "/retailer-dashboard/create-product" },
+    { label: "Products", href: "/retailer-dashboard/view-products" },
+
     {
       label: "Create Discount Offer",
       href: "/retailer-dashboard/create-discount",

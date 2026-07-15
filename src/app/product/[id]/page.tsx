@@ -43,7 +43,7 @@ const ProductIdPage = async ({
     `${process.env.NEXT_PUBLIC_API_URL}/product/get/${id}`,
   );
 
-  console.log(product)
+  console.log(product);
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -83,7 +83,9 @@ const ProductIdPage = async ({
                     {product.available ? "Available" : "Unavailable"}
                   </Badge>
 
-                  <Badge variant={product.stock > 0 ? "outline" : "destructive"}>
+                  <Badge
+                    variant={product.stock > 0 ? "outline" : "destructive"}
+                  >
                     {product.stock > 0 ? "In stock" : "Out of stock"}
                   </Badge>
 
@@ -145,7 +147,7 @@ const ProductIdPage = async ({
                 </div>
 
                 <div className="space-y-3">
-                  <AddToCartButton />
+                  <AddToCartButton productAvailable={product.available} />
                 </div>
               </CardContent>
             </Card>
