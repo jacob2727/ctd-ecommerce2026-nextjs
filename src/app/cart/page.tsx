@@ -16,14 +16,8 @@ export const metadata: Metadata = {
 
 const CartPage = async () => {
   const session = (await auth0.getSession())?.user?.sub;
-  const responseRetailer = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
-    {
-      userId: session,
-    },
-  );
 
-  if (!responseRetailer.data.retailer) {
+  if (!session) {
     redirect("/auth/login");
   }
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const DisoucntsPage = async () => {
-  const sessionRetailer = (await auth0.getSession())?.user;
+  const sessionRetailer = (await auth0.getSession())?.user?.sub;
   const responseRetailer = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {
