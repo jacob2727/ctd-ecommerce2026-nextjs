@@ -42,8 +42,6 @@ const ProductIdPage = async ({
     `${process.env.NEXT_PUBLIC_API_URL}/product/get/${id}`,
   );
 
-  console.log(product);
-
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
