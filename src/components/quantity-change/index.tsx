@@ -6,28 +6,32 @@ import { useRouter } from "next/navigation";
 const QuantityChange = ({
   cartId,
   productId,
+  cart,
 }: {
   cartId: string;
   productId: string;
+  cart: any;
 }) => {
   const router = useRouter();
 
   return (
     <div className="flex flex-col gap-3">
-      <Button
-        onClick={async () => {
-          await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/cart/increment`,
-            {
-              cartId,
-              productId,
-            },
-          );
-          router.refresh();
-        }}
-      >
-        Add
-      </Button>
+      {cart.quantity < cart.product.stock && (
+        <Button
+          onClick={async () => {
+            await axios.post(
+              `${process.env.NEXT_PUBLIC_API_URL}/cart/increment`,
+              {
+                cartId,
+                productId,
+              },
+            );
+            router.refresh();
+          }}
+        >
+          Add
+        </Button>
+      )}
       <Button
         onClick={async () => {
           await axios.post(

@@ -131,6 +131,7 @@ const CartPage = async () => {
 
                           <QuantityChange
                             cartId={item.id}
+                            cart={item}
                             productId={item.product.id}
                           />
 
