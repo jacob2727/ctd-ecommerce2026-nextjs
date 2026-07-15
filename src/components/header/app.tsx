@@ -17,6 +17,8 @@ import {
 } from "../ui/hover-card";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { Popover } from "radix-ui";
+import { PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const Header = async () => {
   const session = await auth0.getSession();
@@ -53,8 +55,8 @@ const Header = async () => {
                 </Link>
               </Button>
 
-              <HoverCard openDelay={100} closeDelay={150}>
-                <HoverCardTrigger asChild>
+              <Popover openDelay={100} closeDelay={150}>
+                <PopoverTrigger asChild>
                   <Button variant="outline" className="max-w-52 gap-2">
                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary">
                       <User className="h-4 w-4" />
@@ -64,9 +66,9 @@ const Header = async () => {
                       {userName}
                     </span>
                   </Button>
-                </HoverCardTrigger>
+                </PopoverTrigger>
 
-                <HoverCardContent align="end" className="w-72 p-3">
+                <PopoverContent align="end" className="w-72 p-3">
                   <div className="px-2 py-2">
                     <p className="text-sm font-semibold">
                       {session.user.name || "Your account"}
@@ -128,8 +130,8 @@ const Header = async () => {
                       Log out
                     </a>
                   </Button>
-                </HoverCardContent>
-              </HoverCard>
+                </PopoverContent>
+              </Popover>
             </>
           ) : (
             <Button asChild>
