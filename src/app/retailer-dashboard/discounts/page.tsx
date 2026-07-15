@@ -2,6 +2,7 @@ import ShowAllDiscounts from "@/components/retailer-dashboard/discounts";
 import { auth0 } from "@/lib/auth0";
 import axios from "axios";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Discounts",
@@ -9,6 +10,17 @@ export const metadata: Metadata = {
 };
 
 const DisoucntsPage = async () => {
+  const sessionRetailer = (await auth0.getSession())?.user;
+  const responseRetailer = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
+    {
+      userId: sessionRetailer,
+    },
+  );
+
+  if (!responseRetailer.data.retailer) {
+    redirect("/start");
+  }
   const session = await auth0.getSession();
   const data = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/discounts/get`,

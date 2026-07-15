@@ -7,6 +7,7 @@ import { Package, ShoppingCart } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Cart",
@@ -14,12 +15,22 @@ export const metadata: Metadata = {
 };
 
 const CartPage = async () => {
-  const session = await auth0.getSession();
+  const session = (await auth0.getSession())?.user?.sub;
+  const responseRetailer = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
+    {
+      userId: session,
+    },
+  );
+
+  if (!responseRetailer.data.retailer) {
+    redirect("/auth/login");
+  }
 
   const { data: cart } = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/cart/get`,
     {
-      userId: session?.user.sub,
+      userId: session,
     },
   );
 
