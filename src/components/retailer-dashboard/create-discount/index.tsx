@@ -44,7 +44,7 @@ const RetailerDashboardForm = () => {
 
   return (
     <div className="flex w-screen h-screen justify-center items-center">
-      <Card className="p-5 w-[30vw]">
+      <Card className="p-5 lg:w-[30vw] md:w-[30vw]">
         <FieldSet>
           <FieldLegend>Create a Discount</FieldLegend>
           <FieldDescription>
