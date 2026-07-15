@@ -12,6 +12,8 @@ import {
 import AddToCartButton from "@/components/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useUser } from "@auth0/nextjs-auth0";
+import { auth0 } from "@/lib/auth0";
 
 export const metadata: Metadata = {
   title: "Product",
@@ -48,9 +50,7 @@ const ProductIdPage = async ({
   }).format(product.priceInCents / 100);
 
   const isInStock = product.stock > 0;
-  const canPurchase = isInStock;
-
-  console.log(product.stock);
+  const available = product.available;
 
   return (
     <main className="min-h-screen bg-muted/20 px-4 py-10 sm:px-6 lg:px-8">
