@@ -191,24 +191,6 @@ const SuccessPage = async ({ params }: { params: Promise<{ id: string }> }) => {
               </CardContent>
             </Card>
 
-            {customerEmail && (
-              <Card>
-                <CardContent className="flex items-start gap-3 pt-6">
-                  <div className="rounded-full bg-muted p-2">
-                    <Mail className="h-4 w-4" />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="font-semibold">Confirmation email</p>
-
-                    <p className="mt-1 break-all text-sm text-muted-foreground">
-                      Payment confirmation was sent to {customerEmail}.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
             <div className="grid gap-3">
               <Button asChild>
                 <Link href="/orders">
