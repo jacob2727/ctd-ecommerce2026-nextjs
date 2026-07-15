@@ -17,14 +17,11 @@ const ProductCatalog = () => {
       const productsRes = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
-      console.log("Products response:", productsRes.data);
       setProducts(productsRes.data);
     };
 
     fetchProducts();
   }, []);
-
-  console.log(products);
 
   return (
     <main className="min-h-screen bg-muted/20 px-4 py-8 sm:px-6 lg:px-8">
