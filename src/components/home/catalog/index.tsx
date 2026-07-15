@@ -17,7 +17,6 @@ const ProductCatalog = () => {
       const productsRes = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
-      console.log(productsRes.data);
       setProducts(productsRes.data.filter((product: any) => product.stock > 0));
     };
 
