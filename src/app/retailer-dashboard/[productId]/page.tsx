@@ -9,7 +9,7 @@ type PageProps = {
 export default async function SingleProductPage({ params }: PageProps) {
   const session = (await auth0.getSession())?.user?.sub;
   const responseRetailer = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/`,
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {
       userId: session,
     },

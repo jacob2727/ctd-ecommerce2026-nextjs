@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 const retailerProducts = async () => {
   const session = (await auth0.getSession())?.user?.sub;
   const responseRetailer = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/`,
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {
       userId: session,
     },

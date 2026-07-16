@@ -20,7 +20,7 @@ const RetailerDashboard = async () => {
     redirect("/auth/login");
   }
   const retailerR = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/`,
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {
       userId: session?.user.sub,
     },
