@@ -31,8 +31,6 @@ const DiscountsByIdPage = async ({
     { id },
   );
 
-  console.log(data);
-
   return (
     <main>
       <EditDiscount data={data} />

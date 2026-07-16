@@ -18,7 +18,6 @@ const ProductCatalog = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
       setProducts(productsRes.data.filter((product: any) => product));
-      console.log(productsRes.data);
     };
 
     fetchProducts();
