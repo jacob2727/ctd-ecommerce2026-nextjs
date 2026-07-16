@@ -21,6 +21,7 @@ const CreateDiscount = async () => {
   if (!responseRetailer.data.retailer) {
     redirect("/start");
   }
+  
   return (
     <main>
       <div className="lg:w-[60vw] md:w-[60vw] flex h-full items-center justify-center self-center justify-self-center">
