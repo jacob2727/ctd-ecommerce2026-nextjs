@@ -15,7 +15,7 @@ const DiscountsByIdPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
-  const session = (await auth0.getSession())?.user;
+  const session = (await auth0.getSession())?.user.sub;
   const responseRetailer = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {

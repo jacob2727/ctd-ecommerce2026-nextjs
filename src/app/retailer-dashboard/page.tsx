@@ -26,8 +26,9 @@ const RetailerDashboard = async () => {
     },
   );
 
+  console.log(retailerR);
+
   if (!retailerR.data.retailer) {
-    console.log("reidtectin");
     redirect("/start");
   }
   console.log(retailerR.data);
