@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 };
 
 const RetailerDashboard = async () => {
-  const session = (await auth0.getSession())?.user?.sub;
+  const session = await auth0.getSession();
 
   const response = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
     {
-      userId: session,
+      userId: session?.user.sub,
     },
   );
 
