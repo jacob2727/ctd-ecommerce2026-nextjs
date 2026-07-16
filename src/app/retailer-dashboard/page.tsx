@@ -6,6 +6,7 @@ import RetailerOrders from "@/components/retailer-dashboard/orders/app";
 import RetailerDashboardSidebar from "@/components/retailer-dashboard/sidebar/app";
 import SideBarRetailerData from "@/components/retailer-dashboard/quickData/app";
 import { Metadata } from "next";
+import useUserData from "../hooks/useUserData";
 
 export const metadata: Metadata = {
   title: "Retailer Dashboard",
@@ -15,14 +16,16 @@ export const metadata: Metadata = {
 const RetailerDashboard = async () => {
   const session = await auth0.getSession();
 
-  const response = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
+  const userR = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/`,
     {
       userId: session?.user.sub,
     },
   );
 
-  if (!response.data.retailer) {
+  const user = (await userR).data;
+
+  if (!user) {
     redirect("/start");
   }
 
