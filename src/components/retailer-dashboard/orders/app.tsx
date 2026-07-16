@@ -44,7 +44,7 @@ const RetailerOrders = () => {
 
   const userData = useUserData(sessionId);
 
-  const retailerId = userData?.id;
+  const retailerId = userData;
   const router = useRouter();
   useEffect(() => {
     const fetchOrders = async () => {
