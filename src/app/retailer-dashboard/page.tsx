@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 
 const RetailerDashboard = async () => {
   const session = await auth0.getSession();
-  console.log(session);
 
   const response = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
