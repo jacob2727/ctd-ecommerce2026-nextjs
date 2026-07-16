@@ -74,7 +74,6 @@ export default function ProductProfile({
     if (field === "priceInCents") {
       setEditValue((product.priceInCents / 100).toString());
     } else {
-      // @ts-expect-error
       setEditValue(product[field]);
     }
   };
@@ -224,6 +223,7 @@ export default function ProductProfile({
     ) : null;
 
   const deleteProduct = async () => {
+    console.log("deleting");
     await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/product/delete-product`,
       {

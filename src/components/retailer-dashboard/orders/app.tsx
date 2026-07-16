@@ -43,9 +43,9 @@ const RetailerOrders = () => {
   const sessionId = session.user?.sub;
 
   const userData = useUserData(sessionId);
-
-  const retailerId = userData;
-  const router = useRouter();
+  // @ts-ignore
+  const retailerId = userData.id;
+  console.log("pid", retailerId);
   useEffect(() => {
     const fetchOrders = async () => {
       if (!retailerId) {
@@ -62,10 +62,9 @@ const RetailerOrders = () => {
             retailer_id: retailerId,
           },
         );
-
-        console.log("Retailer orders response:", response.data);
-
-        setRetailerOrders(response.data ?? []);
+        console.log(1);
+        setRetailerOrders(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Failed to fetch orders:", error);
 
@@ -83,55 +82,9 @@ const RetailerOrders = () => {
     fetchOrders();
   }, [retailerId]);
 
-  if (session.isLoading || (!retailerId && userData === undefined)) {
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-muted-foreground">Loading retailer data...</p>
-      </main>
-    );
+  if (session.isLoading) {
   }
-
-  if (session.error) {
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-destructive">Unable to load your account.</p>
-      </main>
-    );
-  }
-
-  if (!session.user) {
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-muted-foreground">You must be logged in.</p>
-      </main>
-    );
-  }
-
-  if (!retailerId) {
-    router.replace("/start");
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-muted-foreground">No retailer account was found.</p>
-      </main>
-    );
-  }
-
-  if (ordersLoading) {
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-muted-foreground">Loading orders...</p>
-      </main>
-    );
-  }
-
-  if (ordersError) {
-    return (
-      <main className="flex min-h-64 items-center justify-center">
-        <p className="text-destructive">{ordersError}</p>
-      </main>
-    );
-  }
-
+  console.log(`Orders: ${JSON.stringify(retailerOrders)}`);
   return (
     <main className="min-h-0 min-w-0 flex-1 overflow-y-auto border-r bg-muted/20 px-4 py-8 sm:px-6">
       <div className="mx-auto w-full max-w-5xl">

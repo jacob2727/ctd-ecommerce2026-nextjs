@@ -80,6 +80,7 @@ const ProductCreate = () => {
     try {
       setIsSubmitting(true);
 
+      console.log("Creating product:", product);
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/product/create-product`,
@@ -93,6 +94,7 @@ const ProductCreate = () => {
           ownerId: retailerId,
         },
       );
+      console.log("new prod: ", response.data);
       resetForm();
     } catch (error) {
       console.error("Could not create the product:", error);
