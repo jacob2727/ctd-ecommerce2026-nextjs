@@ -17,7 +17,7 @@ const DiscountsByIdPage = async ({
   const { id } = await params;
   const session = (await auth0.getSession())?.user;
   const responseRetailer = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard`,
+    `${process.env.NEXT_PUBLIC_API_URL}/retailer-dashboard/`,
     {
       userId: session,
     },
