@@ -8,7 +8,6 @@ const SideBarRetailerData = () => {
   const userId = useUser()?.user?.sub;
   // @ts-ignore
   const retailer = useUserData(userId);
-  console.log("quick retailer data: ", retailer);
 
   return (
     <div className=" flex-none w-64 ">

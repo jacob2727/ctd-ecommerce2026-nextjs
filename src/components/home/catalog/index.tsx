@@ -17,7 +17,7 @@ const ProductCatalog = () => {
       const productsRes = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/product/all`,
       );
-      setProducts(productsRes.data.filter((product: any) => product));
+      setProducts(productsRes.data.filter((product: any) => product.showing));
     };
 
     fetchProducts();

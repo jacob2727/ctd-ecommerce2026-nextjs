@@ -26,12 +26,9 @@ const RetailerDashboard = async () => {
     },
   );
 
-  console.log(retailerR);
-
   if (!retailerR.data.retailer) {
     redirect("/start");
   }
-  console.log(retailerR.data);
 
   return (
     <main className="flex h-screen w-full overflow-hidden">

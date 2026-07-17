@@ -205,8 +205,10 @@ const RetailerAllProducts = () => {
                       {product.available ? "Available" : "Unavailable"}
                     </Badge>
 
-                    <Badge variant={product.visible ? "outline" : "secondary"}>
-                      {product.visible ? "Visible" : "Hidden"}
+                    <Badge
+                      variant={product.showing ? "outline" : "destructive"}
+                    >
+                      {product.showing ? "Visible" : "Hidden"}
                     </Badge>
 
                     {product.stock <= 5 && (

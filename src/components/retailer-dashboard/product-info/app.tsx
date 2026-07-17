@@ -223,7 +223,6 @@ export default function ProductProfile({
     ) : null;
 
   const deleteProduct = async () => {
-    console.log("deleting");
     await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/product/delete-product`,
       {

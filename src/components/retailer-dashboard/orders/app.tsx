@@ -45,7 +45,7 @@ const RetailerOrders = () => {
   const userData = useUserData(sessionId);
   // @ts-ignore
   const retailerId = userData.id;
-  console.log("pid", retailerId);
+  
   useEffect(() => {
     const fetchOrders = async () => {
       if (!retailerId) {
@@ -62,9 +62,9 @@ const RetailerOrders = () => {
             retailer_id: retailerId,
           },
         );
-        console.log(1);
+        
         setRetailerOrders(response.data);
-        console.log(response.data);
+
       } catch (error) {
         console.error("Failed to fetch orders:", error);
 
@@ -84,7 +84,7 @@ const RetailerOrders = () => {
 
   if (session.isLoading) {
   }
-  console.log(`Orders: ${JSON.stringify(retailerOrders)}`);
+
   return (
     <main className="min-h-0 min-w-0 flex-1 overflow-y-auto border-r bg-muted/20 px-4 py-8 sm:px-6">
       <div className="mx-auto w-full max-w-5xl">
