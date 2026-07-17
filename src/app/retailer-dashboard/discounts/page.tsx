@@ -30,7 +30,7 @@ const DisoucntsPage = async () => {
   const response = data.data;
 
   return (
-    <main>
+    <main className="sm:p-5">
       <ShowAllDiscounts discounts={response} />
     </main>
   );
